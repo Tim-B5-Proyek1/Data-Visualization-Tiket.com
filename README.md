@@ -1,11 +1,11 @@
 # Visualisasi Data Tiket.com
 ## Kelompok B5
     Kelompok B5 Kelas 1B-TIF4:
-* [`Astria Rizka Latifahsary`](https://github.com/AstriaRLatifahsary) `(231524037)`
-* [`Fanza Atsila Fizarli`](https://github.com/Fanzaatsila) `(231524043)`
-* [`Jelang Anugrah Raharjo`](https://github.com/JelangA) `(231524046)`
-* [`Krisna Purnama`](https://github.com/krsXishere) `(231524048)`
-* [`Luthfi Satrio Wicaksono`](https://github.com/LuffySW) `(231524049)`
+* [`Astria Rizka Latifahsary`](https://github.com/AstriaRLatifahsary) `(231524037)` as `Tester & Documentation`
+* [`Fanza Atsila Fizarli`](https://github.com/Fanzaatsila) `(231524043)` as `UI/UX Designer`
+* [`Jelang Anugrah Raharjo`](https://github.com/JelangA) `(231524046)` as `Developer`
+* [`Krisna Purnama`](https://github.com/krsXishere) `(231524048)` as `Developer`
+* [`Luthfi Satrio Wicaksono`](https://github.com/LuffySW) `(231524049)` as `Leader & Analyst`
 
 ## Teknologi
     Teknologi yang digunakan:
