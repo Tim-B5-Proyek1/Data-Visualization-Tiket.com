@@ -10,6 +10,8 @@ class LandingProvider with ChangeNotifier {
   int get currentPageIndexTeamMember => _currentPageIndexTeamMember;
   String _pathPlaneImage = "";
   String get pathPlaneImage => _pathPlaneImage;
+  String _pathAirlineSVG = "";
+  String get pathAirlineSVG => _pathAirlineSVG;
   final List<Widget> _imageHeader = const [
     ImageHeaderItemWidget(pathImage: "assets/jpeg/mountain.jpeg"),
     ImageHeaderItemWidget(pathImage: "assets/jpeg/beach.jpeg"),
@@ -33,31 +35,88 @@ class LandingProvider with ChangeNotifier {
   String? get selectedAirline => _selectedAirline;
 
   setPathPlaneImage(String value) {
-    if (value == "Batik Air") {
-      _pathPlaneImage = "assets/png/batik-air-plane.png";
-      notifyListeners();
-    } else if (value == "Citilink") {
-      _pathPlaneImage = "assets/jpg/citilink-plane.jpg";
-      notifyListeners();
-    } else if (value == "Lion Air") {
-      _pathPlaneImage = "assets/jpg/lion-air-plane.jpg";
-      notifyListeners();
-    } else if (value == "Garuda Indonesia") {
-      _pathPlaneImage = "assets/jpeg/garuda-indonesia-plane.jpeg";
-      notifyListeners();
-    } else if (value == "Pelita Air") {
-      _pathPlaneImage = "assets/jpg/pelita-air-plane.jpg";
-      notifyListeners();
-    } else if (value == "Nam Air") {
-      _pathPlaneImage = "assets/jpg/nam-air-plane.jpg";
-      notifyListeners();
-    } else if (value == "Super Air Jet") {
-      _pathPlaneImage = "assets/jpg/super-air-jet-plane.jpg";
-      notifyListeners();
-    } else {
-      _pathPlaneImage = "assets/png/airplane.png";
-      notifyListeners();
+    // if (value == "Batik Air Indonesia") {
+    //   _pathPlaneImage = "assets/png/batik-air-plane.png";
+    //   notifyListeners();
+    // } else if (value == "Citilink") {
+    //   _pathPlaneImage = "assets/jpg/citilink-plane.jpg";
+    //   notifyListeners();
+    // } else if (value == "Lion Air") {
+    //   _pathPlaneImage = "assets/jpg/lion-air-plane.jpg";
+    //   notifyListeners();
+    // } else if (value == "Garuda Indonesia") {
+    //   _pathPlaneImage = "assets/jpeg/garuda-indonesia-plane.jpeg";
+    //   notifyListeners();
+    // } else if (value == "Pelita Air") {
+    //   _pathPlaneImage = "assets/jpg/pelita-air-plane.jpg";
+    //   notifyListeners();
+    // } else if (value == "Nam Air") {
+    //   _pathPlaneImage = "assets/jpg/nam-air-plane.jpg";
+    //   notifyListeners();
+    // } else if (value == "Super Air Jet") {
+    //   _pathPlaneImage = "assets/jpg/super-air-jet-plane.jpg";
+    //   notifyListeners();
+    // } else {
+    //   _pathPlaneImage = "assets/png/airplane.png";
+    //   notifyListeners();
+    // }
+    switch (value) {
+      case "Batik Air Indonesia":
+        _pathPlaneImage = "assets/png/batik-air-plane.png";
+        break;
+      case "Citilink":
+        _pathPlaneImage = "assets/jpg/citilink-plane.jpg";
+        break;
+      case "Lion Air":
+        _pathPlaneImage = "assets/jpg/lion-air-plane.jpg";
+        break;
+      case "Garuda Indonesia":
+        _pathPlaneImage = "assets/jpeg/garuda-indonesia-plane.jpeg";
+        break;
+      case "Pelita Air":
+        _pathPlaneImage = "assets/jpg/pelita-air-plane.jpg";
+        break;
+      case "Nam Air":
+        _pathPlaneImage = "assets/jpg/nam-air-plane.jpg";
+        break;
+      case "Super Air Jet":
+        _pathPlaneImage = "assets/jpg/super-air-jet-plane.jpg";
+        break;
+      default:
+        _pathPlaneImage = "assets/png/airplane.png";
+        break;
     }
+    notifyListeners();
+  }
+
+  setAvatarAirlines() {
+    switch (_selectedAirline) {
+      case "Batik Air Indonesia":
+        _pathAirlineSVG = "batik-air";
+        break;
+      case "Citilink":
+        _pathAirlineSVG = "citilink";
+        break;
+      case "Lion Air":
+        _pathAirlineSVG = "lion-air";
+        break;
+      case "Garuda Indonesia":
+        _pathAirlineSVG = "garuda-indonesia";
+        break;
+      case "Pelita Air":
+        _pathAirlineSVG = "pelita-air";
+        break;
+      case "Nam Air":
+        _pathAirlineSVG = "nam-air";
+        break;
+      case "Super Air Jet":
+        _pathAirlineSVG = "super-air-jet";
+        break;
+      default:
+        _pathAirlineSVG = "batik-air";
+        break;
+    }
+    notifyListeners();
   }
 
   setCurrentPageIndexHeader(int value) {
