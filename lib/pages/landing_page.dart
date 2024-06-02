@@ -349,7 +349,7 @@ class _LandingPageState extends State<LandingPage>
                       height: defaultPadding,
                     ),
                     SizedBox(
-                      height: 350,
+                      height: 300,
                       width: width(context) * 0.8,
                       child: Stack(
                         clipBehavior: Clip.none,
