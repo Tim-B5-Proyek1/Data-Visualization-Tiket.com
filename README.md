@@ -1,16 +1,21 @@
-# data_visualization_b5
+# Visualisasi Data Tiket.com
+## Kelompok B5
+    Kelompok B5 Kelas 1B-TIF4:
+* [`Astria Rizka Latifahsary`](https://github.com/AstriaRLatifahsary) `(231524037)`
+* [`Fanza Atsila Fizarli`](https://github.com/Fanzaatsila) `(231524043)`
+* [`Jelang Anugrah Raharjo`](https://github.com/JelangA) `(231524046)`
+* [`Krisna Purnama`](https://github.com/krsXishere) `(231524048)`
+* [`Luthfi Satrio Wicaksono`](https://github.com/LuffySW) `(231524049)`
 
-A new Flutter project.
+## Teknologi
+    Teknologi yang digunakan:
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=flutter,vscode,pycharm,nodejs,firebase,postman&perline=3"/>
+</p>
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* [`Flutter`](https://flutter.dev/) `(Aplikasi berbasis WEB dan Visualisasi Data)`
+* [`Visual Studio Code`](https://code.visualstudio.com/) `(IDE untuk Flutter)`
+* [`Pycharm`](https://www.jetbrains.com/pycharm/) `(IDE untuk scraping menggunakan Node.js)`
+* [`Node.js`](https://nodejs.org/en) `(Scraping WEB Tiket.com)`
+* [`Firebase`](https://firebase.google.com/) `(Data Storage & API Endpoint)`
+* [`Postman`](https://www.postman.com/) `(API Platform)`
