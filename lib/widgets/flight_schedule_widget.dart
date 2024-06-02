@@ -112,7 +112,8 @@ class FlightScheduleWidget extends StatelessWidget {
                                   landingProvider.selectedDateFormatted != null
                                       ? landingProvider.selectedDateFormatted
                                           .toString()
-                                      : landingProvider.currentDateFormatted.toString(),
+                                      : landingProvider.currentDateFormatted
+                                          .toString(),
                                   style: secondaryTextStyle.copyWith(
                                     fontWeight: bold,
                                   ),
@@ -142,6 +143,11 @@ class FlightScheduleWidget extends StatelessWidget {
                                 ),
                               ),
                               DropdownButtonFormField(
+                                hint: Text(
+                                  "Pilih maskapai",
+                                  style: secondaryTextStyle.copyWith(
+                                      fontWeight: bold),
+                                ),
                                 icon: Container(
                                   padding:
                                       const EdgeInsets.symmetric(horizontal: 5),
@@ -205,21 +211,30 @@ class FlightScheduleWidget extends StatelessWidget {
                           backgroundColor: primaryColor,
                         ),
                         onPressed: () async {
-                          // print(DateTime.now());
-                          if (landingProvider.selectedDateFormatted != null) {
-                            if (await flightProvider.filterFlights(
-                                landingProvider.selectedDateFormatted
-                                    .toString(),
-                                landingProvider.selectedAirline.toString())) {
-                              navigate();
+                          if (landingProvider.selectedAirline != null) {
+                            if (landingProvider.selectedDateFormatted != null) {
+                              if (await flightProvider.filterFlights(
+                                  landingProvider.selectedDateFormatted
+                                      .toString(),
+                                  landingProvider.selectedAirline.toString())) {
+                                landingProvider.setAvatarAirlines();
+                                navigate();
+                              }
+                            } else {
+                              if (await flightProvider.filterFlights(
+                                  landingProvider.currentDateFormatted
+                                      .toString(),
+                                  landingProvider.selectedAirline.toString())) {
+                                landingProvider.setAvatarAirlines();
+                                navigate();
+                              }
                             }
                           } else {
-                            if (await flightProvider.filterFlights(
-                                landingProvider.currentDateFormatted
-                                    .toString(),
-                                landingProvider.selectedAirline.toString())) {
-                              navigate();
-                            }
+                            showSnackBar(
+                              context,
+                              "Pilih maskapai terlebih dahulu",
+                              Colors.red,
+                            );
                           }
                         },
                         child: flightProvider.isLoading

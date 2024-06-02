@@ -145,7 +145,7 @@ class FlightProvider with ChangeNotifier {
 
     for (var flight in _flight) {
       if (flight.tanggalTerbang != null) {
-        String month = flight.tanggalTerbang!.substring(0, 7); // YYYY-MM
+        String month = flight.tanggalTerbang!.substring(0, 7);
         if (flightsPerMonth.containsKey(month)) {
           flightsPerMonth[month] = flightsPerMonth[month]! + 1;
         } else {
@@ -190,7 +190,8 @@ class FlightProvider with ChangeNotifier {
       final format = DateFormat('HH:mm');
       final jamBerangkat = format.parse(flight.jamBerangkat.toString());
       final jamSampai = format.parse(flight.jamSampai.toString());
-      _departureTime.add(jamSampai.difference(jamBerangkat).inMinutes.toString());
+      _departureTime
+          .add(jamSampai.difference(jamBerangkat).inMinutes.toString());
     }
   }
 }
