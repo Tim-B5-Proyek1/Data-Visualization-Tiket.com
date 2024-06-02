@@ -17,6 +17,7 @@ class TeamMemberCardWidget extends StatelessWidget {
         child: Image.asset(
           "assets/png/$member.png",
           fit: BoxFit.contain,
+          filterQuality: FilterQuality.high,
         ),
       ),
     );
