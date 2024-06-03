@@ -173,7 +173,7 @@ class SearchBarFlightMobileWidget extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    width: 100,
+                    width: 80,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
@@ -217,9 +217,11 @@ class SearchBarFlightMobileWidget extends StatelessWidget {
                                 ),
                               ),
                             )
-                          : Icon(
-                              Icons.search,
-                              color: primaryColor,
+                          : Text(
+                              "Cari",
+                              style: primaryTextStyle.copyWith(
+                                color: primaryColor,
+                              ),
                             ),
                     ),
                   ),
