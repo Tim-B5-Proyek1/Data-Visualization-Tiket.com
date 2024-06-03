@@ -56,9 +56,6 @@ class _FlightMobilePageState extends State<FlightMobilePage> {
                       landingProvider: landingProvider,
                       flightProvider: flightProvider,
                     ),
-                    SizedBox(
-                      height: height(context) * 0.2,
-                    ),
                     const FooterWidget(),
                   ],
                 ),

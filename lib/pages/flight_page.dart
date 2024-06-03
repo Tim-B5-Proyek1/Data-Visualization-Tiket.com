@@ -27,7 +27,6 @@ class _FlightPageState extends State<FlightPage> {
           child: Scaffold(
             backgroundColor: backgroundColor,
             appBar: AppBar(
-              // toolbarHeight: 500,
               title: SizedBox(
                 height: 100,
                 width: 200,

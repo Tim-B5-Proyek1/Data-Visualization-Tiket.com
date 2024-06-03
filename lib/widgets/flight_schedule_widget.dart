@@ -68,10 +68,10 @@ class FlightScheduleWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Bandingkan harga tiket di B5.com",
+                  "Bandingkan harga tiket di BFive",
                   style: primaryTextStyle.copyWith(
                     fontWeight: bold,
-                    fontSize: 25,
+                    fontSize: 20,
                   ),
                 ),
                 const SizedBox(
@@ -274,7 +274,7 @@ class FlightScheduleWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Bandingkan harga tiket\ndi B5.com",
+                  "Bandingkan harga\ntiket di BFive",
                   style: primaryTextStyle.copyWith(
                     fontWeight: bold,
                     fontSize: 50,
