@@ -16,63 +16,76 @@ class ChartTotalFlightByMaskapaiWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SfCartesianChart(
-      tooltipBehavior: tooltipTotalPenerbangan,
-      margin: EdgeInsets.zero,
-      // palette: [
-      //   primaryColor,
-      //   secondaryColor,
-      //   Colors.red,
-      // ],
-      legend: Legend(
-        toggleSeriesVisibility: true,
-        position: LegendPosition.bottom,
-        isVisible: true,
-        textStyle: secondaryTextStyle,
-        overflowMode: LegendItemOverflowMode.wrap,
-        isResponsive: true,
-        orientation: LegendItemOrientation.vertical,
-      ),
-      primaryXAxis: CategoryAxis(
-        minorTickLines: const MinorTickLines(size: 0),
-        labelPlacement: LabelPlacement.onTicks,
-        labelStyle: primaryTextStyle,
-        rangePadding: ChartRangePadding.round,
-      ),
-      primaryYAxis: NumericAxis(
-        isVisible: false,
-      ),
-      series: <CartesianSeries>[
-        SplineAreaSeries<TotalFlightChartModel, String>(
-          dataSource: flightProvider.chartTingkatPenerbanganByMaskapai,
-          xValueMapper: (data, _) => data.maskapai,
-          yValueMapper: (data, _) => data.totalPenerbangan,
-          dataLabelMapper: (data, _) => data.maskapai,
-          dataLabelSettings: DataLabelSettings(
-            isVisible: true,
-            textStyle: secondaryTextStyle,
+    return Column(
+      children: [
+        Center(
+          child: Text(
+            "Total Penerbangan Berdasarkan Maskapai",
+            style: secondaryTextStyle.copyWith(
+              fontWeight: bold,
+            ),
           ),
-          cardinalSplineTension: 0,
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              primaryColor,
-              white,
+        ),
+        SizedBox(
+          height: defaultPadding,
+        ),
+        SizedBox(
+          width: width(context) * 0.5,
+          child: SfCartesianChart(
+            tooltipBehavior: tooltipTotalPenerbangan,
+            margin: EdgeInsets.zero,
+            legend: Legend(
+              toggleSeriesVisibility: true,
+              position: LegendPosition.bottom,
+              isVisible: false,
+              textStyle: secondaryTextStyle,
+              overflowMode: LegendItemOverflowMode.wrap,
+              isResponsive: true,
+              orientation: LegendItemOrientation.vertical,
+            ),
+            primaryXAxis: CategoryAxis(
+              minorTickLines: const MinorTickLines(size: 0),
+              labelPlacement: LabelPlacement.onTicks,
+              labelStyle: secondaryTextStyle,
+              rangePadding: ChartRangePadding.round,
+            ),
+            primaryYAxis: NumericAxis(
+              isVisible: false,
+            ),
+            series: <CartesianSeries>[
+              SplineAreaSeries<TotalFlightChartModel, String>(
+                dataSource: flightProvider.chartTingkatPenerbanganByMaskapai,
+                xValueMapper: (data, _) => data.maskapai,
+                yValueMapper: (data, _) => data.totalPenerbangan,
+                dataLabelMapper: (data, _) => data.totalPenerbangan.toString(),
+                dataLabelSettings: DataLabelSettings(
+                  isVisible: true,
+                  textStyle: secondaryTextStyle,
+                ),
+                cardinalSplineTension: 0,
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    primaryColor,
+                    white,
+                  ],
+                ),
+                markerSettings: MarkerSettings(
+                  isVisible: true,
+                  shape: DataMarkerType.circle,
+                  borderColor: white,
+                  color: Colors.yellow,
+                ),
+                borderWidth: 5,
+                enableTooltip: true,
+                splineType: SplineType.clamped,
+                borderColor: primaryColor,
+                isVisible: true,
+                color: secondaryColor,
+              ),
             ],
           ),
-          markerSettings: MarkerSettings(
-            isVisible: true,
-            shape: DataMarkerType.circle,
-            borderColor: white,
-            color: Colors.yellow,
-          ),
-          borderWidth: 5,
-          enableTooltip: true,
-          splineType: SplineType.clamped,
-          borderColor: primaryColor,
-          isVisible: true,
-          color: secondaryColor,
         ),
       ],
     );

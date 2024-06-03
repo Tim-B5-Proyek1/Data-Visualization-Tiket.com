@@ -13,10 +13,22 @@ class LandingProvider with ChangeNotifier {
   String _pathAirlineSVG = "";
   String get pathAirlineSVG => _pathAirlineSVG;
   final List<Widget> _imageHeader = const [
-    ImageHeaderItemWidget(pathImage: "assets/jpeg/mountain.jpeg"),
-    ImageHeaderItemWidget(pathImage: "assets/jpeg/beach.jpeg"),
-    ImageHeaderItemWidget(pathImage: "assets/jpeg/city.jpeg"),
-    ImageHeaderItemWidget(pathImage: "assets/jpeg/florest.jpeg"),
+    ImageHeaderItemWidget(
+      pathImage: "assets/jpeg/mountain.jpeg",
+      caption: "Visualisasi Data Tiket.com\noleh B5",
+    ),
+    ImageHeaderItemWidget(
+      pathImage: "assets/jpeg/beach.jpeg",
+      caption: "Sangat Interaktif",
+    ),
+    ImageHeaderItemWidget(
+      pathImage: "assets/jpeg/city.jpeg",
+      caption: "Pastinya Informatif",
+    ),
+    ImageHeaderItemWidget(
+      pathImage: "assets/jpeg/florest.jpeg",
+      caption: "Dan Responsif",
+    ),
   ];
   List<Widget> get imageHeader => _imageHeader;
   final List<Widget> _imageMemberTeam = const [
@@ -35,31 +47,6 @@ class LandingProvider with ChangeNotifier {
   String? get selectedAirline => _selectedAirline;
 
   setPathPlaneImage(String value) {
-    // if (value == "Batik Air Indonesia") {
-    //   _pathPlaneImage = "assets/png/batik-air-plane.png";
-    //   notifyListeners();
-    // } else if (value == "Citilink") {
-    //   _pathPlaneImage = "assets/jpg/citilink-plane.jpg";
-    //   notifyListeners();
-    // } else if (value == "Lion Air") {
-    //   _pathPlaneImage = "assets/jpg/lion-air-plane.jpg";
-    //   notifyListeners();
-    // } else if (value == "Garuda Indonesia") {
-    //   _pathPlaneImage = "assets/jpeg/garuda-indonesia-plane.jpeg";
-    //   notifyListeners();
-    // } else if (value == "Pelita Air") {
-    //   _pathPlaneImage = "assets/jpg/pelita-air-plane.jpg";
-    //   notifyListeners();
-    // } else if (value == "Nam Air") {
-    //   _pathPlaneImage = "assets/jpg/nam-air-plane.jpg";
-    //   notifyListeners();
-    // } else if (value == "Super Air Jet") {
-    //   _pathPlaneImage = "assets/jpg/super-air-jet-plane.jpg";
-    //   notifyListeners();
-    // } else {
-    //   _pathPlaneImage = "assets/png/airplane.png";
-    //   notifyListeners();
-    // }
     switch (value) {
       case "Batik Air Indonesia":
         _pathPlaneImage = "assets/png/batik-air-plane.png";

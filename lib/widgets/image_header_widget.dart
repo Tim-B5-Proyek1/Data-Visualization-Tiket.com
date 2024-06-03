@@ -4,7 +4,7 @@ import 'package:data_visualization_b5/widgets/page_indicator_widget.dart';
 import 'package:flutter/material.dart';
 
 class ImageHeaderWidget extends StatelessWidget {
-  const ImageHeaderWidget({
+  const   ImageHeaderWidget({
     super.key,
     required this.landingProvider,
     required this.pageViewHeaderController,
@@ -27,7 +27,7 @@ class ImageHeaderWidget extends StatelessWidget {
         ),
         Positioned(
           right: 100,
-          bottom: 100,
+          bottom: 50,
           child: PageIndicatorWidget(
             length: landingProvider.imageHeader.length,
             currentPage: landingProvider.currentPageIndexHeader,
