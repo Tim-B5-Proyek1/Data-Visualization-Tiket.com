@@ -4,8 +4,8 @@ import 'package:data_visualization_b5/providers/flight_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class ChartHargaTiketWidget extends StatelessWidget {
-  const ChartHargaTiketWidget({
+class ChartHargaTiketMobileWidget extends StatelessWidget {
+  const ChartHargaTiketMobileWidget({
     super.key,
     required this.flightProvider,
     required this.tooltipHargaTiket,
@@ -30,7 +30,7 @@ class ChartHargaTiketWidget extends StatelessWidget {
           height: defaultPadding,
         ),
         SizedBox(
-          width: width(context) * 0.2,
+          width: width(context) * 0.4,
           child: SfCircularChart(
             tooltipBehavior: tooltipHargaTiket,
             margin: EdgeInsets.zero,

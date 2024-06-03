@@ -1,7 +1,7 @@
 import 'package:data_visualization_b5/common/constant.dart';
-import 'package:data_visualization_b5/pages/landing_page.dart';
 import 'package:data_visualization_b5/providers/flight_provider.dart';
 import 'package:data_visualization_b5/providers/landing_provider.dart';
+import 'package:data_visualization_b5/widgets/landing_template_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -38,7 +38,7 @@ class _DataVisualizationState extends State<DataVisualization> {
             useMaterial3: true,
           ),
           debugShowCheckedModeBanner: false,
-          home: const LandingPage(),
+          home: const LandingTemplateWidget(),
         );
       }),
     );

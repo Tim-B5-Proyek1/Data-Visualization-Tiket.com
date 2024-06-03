@@ -16,67 +16,77 @@ class ChartTotalFlightByMonthWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: width(context) * 0.2,
-      child: SfCartesianChart(
-        tooltipBehavior: tooltipTotalPenerbanganPerBulan,
-        margin: EdgeInsets.zero,
-        // palette: [
-        //   primaryColor,
-        //   secondaryColor,
-        //   Colors.red,
-        // ],
-        legend: Legend(
-          toggleSeriesVisibility: true,
-          position: LegendPosition.bottom,
-          isVisible: true,
-          textStyle: secondaryTextStyle,
-          overflowMode: LegendItemOverflowMode.wrap,
-          isResponsive: true,
-          orientation: LegendItemOrientation.vertical,
-        ),
-        primaryXAxis: CategoryAxis(
-          minorTickLines: const MinorTickLines(size: 0),
-          labelPlacement: LabelPlacement.onTicks,
-          labelStyle: primaryTextStyle,
-          rangePadding: ChartRangePadding.round,
-        ),
-        primaryYAxis: NumericAxis(
-          isVisible: false,
-        ),
-        series: <CartesianSeries>[
-          ColumnSeries<TotalFlightMonthChartModel, String>(
-            dataSource: flightProvider.chartTotalFlightMonth,
-            xValueMapper: (data, _) => data.maskapai,
-            yValueMapper: (data, _) => data.totalPenerbangan,
-            dataLabelMapper: (data, _) => data.maskapai,
-            dataLabelSettings: DataLabelSettings(
-              isVisible: true,
-              textStyle: secondaryTextStyle,
+    return Column(
+      children: [
+        Center(
+          child: Text(
+            "Total Penerbangan Per Bulan",
+            style: secondaryTextStyle.copyWith(
+              fontWeight: bold,
             ),
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                primaryColor,
-                white,
-              ],
-            ),
-            markerSettings: MarkerSettings(
-              isVisible: true,
-              shape: DataMarkerType.circle,
-              borderColor: white,
-              borderWidth: 0.5,
-              color: Colors.yellow,
-            ),
-            // borderWidth: 5,
-            enableTooltip: true,
-            // borderColor: primaryColor,
-            isVisible: true,
-            color: secondaryColor,
           ),
-        ],
-      ),
+        ),
+        SizedBox(
+          height: defaultPadding,
+        ),
+        SizedBox(
+          width: width(context) * 0.5,
+          child: SfCartesianChart(
+            tooltipBehavior: tooltipTotalPenerbanganPerBulan,
+            margin: EdgeInsets.zero,
+            legend: Legend(
+              toggleSeriesVisibility: true,
+              position: LegendPosition.bottom,
+              isVisible: false,
+              textStyle: secondaryTextStyle,
+              overflowMode: LegendItemOverflowMode.wrap,
+              isResponsive: true,
+              orientation: LegendItemOrientation.vertical,
+            ),
+            primaryXAxis: CategoryAxis(
+              minorTickLines: const MinorTickLines(size: 0),
+              labelPlacement: LabelPlacement.onTicks,
+              labelStyle: secondaryTextStyle,
+              rangePadding: ChartRangePadding.round,
+            ),
+            primaryYAxis: NumericAxis(
+              isVisible: false,
+            ),
+            series: <CartesianSeries>[
+              ColumnSeries<TotalFlightMonthChartModel, String>(
+                dataSource: flightProvider.chartTotalFlightMonth,
+                xValueMapper: (data, _) => data.maskapai,
+                yValueMapper: (data, _) => data.totalPenerbangan,
+                dataLabelMapper: (data, _) => data.totalPenerbangan.toString(),
+                dataLabelSettings: DataLabelSettings(
+                  isVisible: true,
+                  textStyle: secondaryTextStyle,
+                ),
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    primaryColor,
+                    white,
+                  ],
+                ),
+                markerSettings: MarkerSettings(
+                  isVisible: true,
+                  shape: DataMarkerType.circle,
+                  borderColor: white,
+                  borderWidth: 0.5,
+                  color: Colors.yellow,
+                ),
+                // borderWidth: 5,
+                enableTooltip: true,
+                // borderColor: primaryColor,
+                isVisible: true,
+                color: secondaryColor,
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

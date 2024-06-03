@@ -2,6 +2,7 @@ import 'package:data_visualization_b5/common/constant.dart';
 import 'package:data_visualization_b5/providers/flight_provider.dart';
 import 'package:data_visualization_b5/providers/landing_provider.dart';
 import 'package:data_visualization_b5/widgets/airline_logo_widget.dart';
+import 'package:data_visualization_b5/widgets/responsive_layout_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -36,102 +37,140 @@ class FlightListTileWidget extends StatelessWidget {
                       primaryShadow,
                     ],
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                        child: Row(
-                          children: [
-                            Container(
-                              height: 50,
-                              width: 50,
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey),
-                                color: white,
-                                shape: BoxShape.circle,
-                              ),
-                              child: AirlineLogoWidget(
-                                  logo: landingProvider.pathAirlineSVG),
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              flight[index].maskapai.toString(),
-                              style: secondaryTextStyle,
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Image.asset("assets/png/briefcase.png"),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Image.asset("assets/png/fork-spoon.png"),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        child: Row(
+                  child: ResponsiveLayoutWidget(
+                    mobileBody: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Column(
                           children: [
                             SizedBox(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                              child: Row(
+                                children: [
+                                  Container(
+                                    height: 50,
+                                    width: 50,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey),
+                                      color: white,
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: AirlineLogoWidget(
+                                        logo: landingProvider.pathAirlineSVG),
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    flight[index].maskapai.toString(),
+                                    style: secondaryTextStyle,
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  Image.asset("assets/png/briefcase.png"),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  Image.asset("assets/png/fork-spoon.png"),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: defaultPadding,
+                            ),
+                            SizedBox(
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          flight[index].jamBerangkat.toString(),
+                                          style: secondaryTextStyle.copyWith(
+                                            fontWeight: bold,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                        Text(
+                                          flight[index]
+                                              .asalPenerbangan
+                                              .toString(),
+                                          style: secondaryTextStyle.copyWith(
+                                            fontWeight: regular,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: defaultPadding,
+                                  ),
+                                  SizedBox(
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          "${flightProvider.departureTime[index]} menit",
+                                          style: secondaryTextStyle.copyWith(
+                                            fontWeight: regular,
+                                          ),
+                                        ),
+                                        SvgPicture.asset(
+                                            "assets/svg/margin.svg"),
+                                        Text(
+                                          flight[index].transit.toString(),
+                                          style: secondaryTextStyle.copyWith(
+                                            fontWeight: regular,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: defaultPadding,
+                                  ),
+                                  SizedBox(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        Text(
+                                          flight[index].jamSampai.toString(),
+                                          style: secondaryTextStyle.copyWith(
+                                            fontWeight: bold,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                        Text(
+                                          flight[index].tujuan.toString(),
+                                          style: secondaryTextStyle.copyWith(
+                                            fontWeight: regular,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: defaultPadding,
+                            ),
+                            SizedBox(
+                              // width: width(context) * 0.1,
+                              child: Row(
                                 children: [
                                   Text(
-                                    flight[index].jamBerangkat.toString(),
+                                    "Rp${formatCurrency(flight[index].hargaTiket)}",
                                     style: secondaryTextStyle.copyWith(
                                       fontWeight: bold,
                                       fontSize: 16,
+                                      color: Colors.red,
                                     ),
                                   ),
                                   Text(
-                                    flight[index].asalPenerbangan.toString(),
-                                    style: secondaryTextStyle.copyWith(
-                                      fontWeight: regular,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              width: defaultPadding,
-                            ),
-                            SizedBox(
-                              child: Column(
-                                children: [
-                                  Text(
-                                    "${flightProvider.departureTime[index]} menit",
-                                    style: secondaryTextStyle.copyWith(
-                                      fontWeight: regular,
-                                    ),
-                                  ),
-                                  SvgPicture.asset("assets/svg/margin.svg"),
-                                  Text(
-                                    flight[index].transit.toString(),
-                                    style: secondaryTextStyle.copyWith(
-                                      fontWeight: regular,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              width: defaultPadding,
-                            ),
-                            SizedBox(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    flight[index].jamSampai.toString(),
-                                    style: secondaryTextStyle.copyWith(
-                                      fontWeight: bold,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                  Text(
-                                    flight[index].tujuan.toString(),
+                                    "/orang",
                                     style: secondaryTextStyle.copyWith(
                                       fontWeight: regular,
                                     ),
@@ -141,30 +180,138 @@ class FlightListTileWidget extends StatelessWidget {
                             ),
                           ],
                         ),
-                      ),
-                      SizedBox(
-                        width: width(context) * 0.1,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Text(
-                              "Rp${formatCurrency(flight[index].hargaTiket)}",
-                              style: secondaryTextStyle.copyWith(
-                                fontWeight: bold,
-                                fontSize: 16,
-                                color: Colors.red,
+                      ],
+                    ),
+                    desktopBody: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                          child: Row(
+                            children: [
+                              Container(
+                                height: 50,
+                                width: 50,
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey),
+                                  color: white,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: AirlineLogoWidget(
+                                    logo: landingProvider.pathAirlineSVG),
                               ),
-                            ),
-                            Text(
-                              "/orang",
-                              style: secondaryTextStyle.copyWith(
-                                fontWeight: regular,
+                              const SizedBox(
+                                width: 10,
                               ),
-                            ),
-                          ],
+                              Text(
+                                flight[index].maskapai.toString(),
+                                style: secondaryTextStyle,
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Image.asset("assets/png/briefcase.png"),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Image.asset("assets/png/fork-spoon.png"),
+                            ],
+                          ),
                         ),
-                      )
-                    ],
+                        SizedBox(
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      flight[index].jamBerangkat.toString(),
+                                      style: secondaryTextStyle.copyWith(
+                                        fontWeight: bold,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                    Text(
+                                      flight[index].asalPenerbangan.toString(),
+                                      style: secondaryTextStyle.copyWith(
+                                        fontWeight: regular,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                width: defaultPadding,
+                              ),
+                              SizedBox(
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      "${flightProvider.departureTime[index]} menit",
+                                      style: secondaryTextStyle.copyWith(
+                                        fontWeight: regular,
+                                      ),
+                                    ),
+                                    SvgPicture.asset("assets/svg/margin.svg"),
+                                    Text(
+                                      flight[index].transit.toString(),
+                                      style: secondaryTextStyle.copyWith(
+                                        fontWeight: regular,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                width: defaultPadding,
+                              ),
+                              SizedBox(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      flight[index].jamSampai.toString(),
+                                      style: secondaryTextStyle.copyWith(
+                                        fontWeight: bold,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                    Text(
+                                      flight[index].tujuan.toString(),
+                                      style: secondaryTextStyle.copyWith(
+                                        fontWeight: regular,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          // width: width(context) * 0.1,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                "Rp${formatCurrency(flight[index].hargaTiket)}",
+                                style: secondaryTextStyle.copyWith(
+                                  fontWeight: bold,
+                                  fontSize: 16,
+                                  color: Colors.red,
+                                ),
+                              ),
+                              Text(
+                                "/orang",
+                                style: secondaryTextStyle.copyWith(
+                                  fontWeight: regular,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },

@@ -5,14 +5,14 @@ import 'package:data_visualization_b5/pages/flight_page.dart';
 import 'package:data_visualization_b5/providers/flight_provider.dart';
 import 'package:data_visualization_b5/providers/landing_provider.dart';
 import 'package:data_visualization_b5/widgets/airline_logo_widget.dart';
-import 'package:data_visualization_b5/widgets/chart_harga_tiket_widget.dart';
+import 'package:data_visualization_b5/widgets/chart_harga_tiket_mobile_widget.dart';
 import 'package:data_visualization_b5/widgets/chart_total_flight_by_month_widget.dart';
 import 'package:data_visualization_b5/widgets/chart_total_flight_by_year_widget.dart';
 import 'package:data_visualization_b5/widgets/chart_total_penerbangan_by_maskapai_widget.dart';
+import 'package:data_visualization_b5/widgets/drawer_item_widget.dart';
 import 'package:data_visualization_b5/widgets/flight_schedule_widget.dart';
 import 'package:data_visualization_b5/widgets/footer_widget.dart';
 import 'package:data_visualization_b5/widgets/image_header_widget.dart';
-import 'package:data_visualization_b5/widgets/navigation_bar_widget.dart';
 import 'package:data_visualization_b5/widgets/page_indicator_widget.dart';
 import 'package:data_visualization_b5/widgets/responsive_layout_widget.dart';
 import 'package:data_visualization_b5/widgets/section_title_widget.dart';
@@ -20,15 +20,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class LandingPage extends StatefulWidget {
-  const LandingPage({super.key});
+class LandingMobilePage extends StatefulWidget {
+  const LandingMobilePage({super.key});
 
   @override
-  State<LandingPage> createState() => _LandingPageState();
+  State<LandingMobilePage> createState() => _LandingMobilePageState();
 }
 
-class _LandingPageState extends State<LandingPage>
-    with TickerProviderStateMixin {
+class _LandingMobilePageState extends State<LandingMobilePage> {
   late PageController pageViewHeaderController;
   late PageController pageViewTeamMemberController;
   final airlineScrollController = ScrollController();
@@ -153,6 +152,66 @@ class _LandingPageState extends State<LandingPage>
     );
   }
 
+  Widget buildDrawerMenuItem(BuildContext context) => Column(
+        children: [
+          DrawerItemWidget(
+            text: "Beranda",
+            onTap: () {
+              Scrollable.ensureVisible(
+                homeKey.currentContext!,
+                duration: const Duration(seconds: 1),
+                curve: Curves.easeIn,
+              );
+              Navigator.of(context).pop();
+            },
+          ),
+          DrawerItemWidget(
+            text: "Data Penerbangan",
+            onTap: () {
+              Scrollable.ensureVisible(
+                flightKey.currentContext!,
+                duration: const Duration(seconds: 1),
+                curve: Curves.easeIn,
+              );
+              Navigator.of(context).pop();
+            },
+          ),
+          DrawerItemWidget(
+            text: "Maskapai",
+            onTap: () {
+              Scrollable.ensureVisible(
+                airlineKey.currentContext!,
+                duration: const Duration(seconds: 1),
+                curve: Curves.easeIn,
+              );
+              Navigator.of(context).pop();
+            },
+          ),
+          DrawerItemWidget(
+            text: "Visualisasi Data",
+            onTap: () {
+              Scrollable.ensureVisible(
+                dataVisualizationKey.currentContext!,
+                duration: const Duration(seconds: 1),
+                curve: Curves.easeIn,
+              );
+              Navigator.of(context).pop();
+            },
+          ),
+          DrawerItemWidget(
+            text: "Tentang Kami",
+            onTap: () {
+              Scrollable.ensureVisible(
+                aboutUsKey.currentContext!,
+                duration: const Duration(seconds: 1),
+                curve: Curves.easeIn,
+              );
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
@@ -175,24 +234,21 @@ class _LandingPageState extends State<LandingPage>
           child: Scaffold(
             backgroundColor: backgroundColor,
             appBar: AppBar(
-              leadingWidth: 250,
-              leading: Padding(
-                padding: const EdgeInsets.only(left: 100),
-                child: SizedBox(
-                  height: 100,
-                  width: 200,
-                  child: Image.asset(
-                    "assets/png/Tiket.png",
-                    fit: BoxFit.cover,
-                  ),
-                ),
+              title: Image.asset(
+                "assets/png/Tiket.png",
+                height: 100,
+                width: 150,
+                fit: BoxFit.contain,
               ),
-              title: NavigationBarWidget(
-                homeKey: homeKey,
-                flightKey: flightKey,
-                airlineKey: airlineKey,
-                dataVisualizationKey: dataVisualizationKey,
-                aboutUsKey: aboutUsKey,
+            ),
+            drawer: Drawer(
+              backgroundColor: backgroundColor,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    buildDrawerMenuItem(context),
+                  ],
+                ),
               ),
             ),
             body: SafeArea(
@@ -202,7 +258,7 @@ class _LandingPageState extends State<LandingPage>
                   children: [
                     Container(
                       key: homeKey,
-                      height: 400,
+                      height: height(context) * 0.3,
                       width: double.maxFinite,
                       decoration: BoxDecoration(
                         color: backgroundColor,
@@ -319,7 +375,7 @@ class _LandingPageState extends State<LandingPage>
                               SizedBox(
                                 width: width(context) * 0.1,
                               ),
-                              ChartHargaTiketWidget(
+                              ChartHargaTiketMobileWidget(
                                 flightProvider: flightProvider,
                                 tooltipHargaTiket: tooltipHargaTiket,
                               ),

@@ -3,18 +3,18 @@ import 'package:data_visualization_b5/providers/flight_provider.dart';
 import 'package:data_visualization_b5/providers/landing_provider.dart';
 import 'package:data_visualization_b5/widgets/flight_list_tile_widget.dart';
 import 'package:data_visualization_b5/widgets/footer_widget.dart';
-import 'package:data_visualization_b5/widgets/search_bar_flight_widget.dart';
+import 'package:data_visualization_b5/widgets/search_bar_flight_mobile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class FlightPage extends StatefulWidget {
-  const FlightPage({super.key});
+class FlightMobilePage extends StatefulWidget {
+  const FlightMobilePage({super.key});
 
   @override
-  State<FlightPage> createState() => _FlightPageState();
+  State<FlightMobilePage> createState() => _FlightMobilePageState();
 }
 
-class _FlightPageState extends State<FlightPage> {
+class _FlightMobilePageState extends State<FlightMobilePage> {
   ScrollController flightScrollController = ScrollController();
 
   @override
@@ -45,7 +45,7 @@ class _FlightPageState extends State<FlightPage> {
                       thickness: 1,
                       color: Colors.grey[350],
                     ),
-                    SearchBarFlightWidget(
+                    SearchBarFlightMobileWidget(
                       landingProvider: landingProvider,
                       flightProvider: flightProvider,
                     ),
@@ -57,7 +57,7 @@ class _FlightPageState extends State<FlightPage> {
                       flightProvider: flightProvider,
                     ),
                     SizedBox(
-                      height: height(context) * 0.3,
+                      height: height(context) * 0.2,
                     ),
                     const FooterWidget(),
                   ],
