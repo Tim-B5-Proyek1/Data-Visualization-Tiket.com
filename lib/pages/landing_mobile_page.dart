@@ -1,4 +1,6 @@
 import 'dart:async';
+
+import 'package:after_layout/after_layout.dart';
 import 'package:data_visualization_b5/common/constant.dart';
 import 'package:data_visualization_b5/pages/flight_mobile_page.dart';
 import 'package:data_visualization_b5/pages/flight_page.dart';
@@ -27,22 +29,22 @@ class LandingMobilePage extends StatefulWidget {
   State<LandingMobilePage> createState() => _LandingMobilePageState();
 }
 
-class _LandingMobilePageState extends State<LandingMobilePage> {
+class _LandingMobilePageState extends State<LandingMobilePage> with AfterLayoutMixin<LandingMobilePage> {
   late PageController pageViewHeaderController;
   late PageController pageViewTeamMemberController;
   final airlineScrollController = ScrollController();
   final teamMemberScrollController = ScrollController();
+  ScrollController visualisasiScrollController = ScrollController();
   GlobalKey homeKey = GlobalKey();
   GlobalKey flightKey = GlobalKey();
   GlobalKey airlineKey = GlobalKey();
   GlobalKey dataVisualizationKey = GlobalKey();
   GlobalKey aboutUsKey = GlobalKey();
-  Timer? timer;
   late TooltipBehavior tooltipHargaTiket;
   late TooltipBehavior tooltipTotalPenerbangan;
   late TooltipBehavior tooltipTotalPenerbanganPerTahun;
   late TooltipBehavior tooltipTotalPenerbanganPerBulan;
-  ScrollController visualisasiScrollController = ScrollController();
+  bool isDisposed = false;
 
   @override
   void initState() {
@@ -79,50 +81,27 @@ class _LandingMobilePageState extends State<LandingMobilePage> {
     pageViewTeamMemberController = PageController(
       initialPage: 0,
     );
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      animateToMinMax(
-        airlineScrollController.position.maxScrollExtent,
-        airlineScrollController.position.minScrollExtent,
-        airlineScrollController.position.maxScrollExtent,
-        10,
-        airlineScrollController,
-      );
-    });
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    // autoScrollTeamMember();
+  FutureOr<void> afterFirstLayout(BuildContext context) {
+    animateToMinMax(
+      airlineScrollController.position.maxScrollExtent,
+      airlineScrollController.position.minScrollExtent,
+      airlineScrollController.position.maxScrollExtent,
+      10,
+      airlineScrollController,
+    );
   }
 
   @override
   void dispose() {
     super.dispose();
+    isDisposed = true;
     airlineScrollController.dispose();
     teamMemberScrollController.dispose();
+    visualisasiScrollController.dispose();
     pageViewHeaderController.dispose();
-    timer?.cancel();
-  }
-
-  autoScrollTeamMember() {
-    final landingProvider = Provider.of<LandingProvider>(context);
-    timer = Timer.periodic(const Duration(seconds: 2), (timer) {
-      if (landingProvider.currentPageIndexTeamMember <=
-          landingProvider.imageMemberTeam.length) {
-        int iterator = 0;
-        iterator++;
-        landingProvider.setCurrentPageIndexTeamMember(iterator);
-      } else {
-        landingProvider.setCurrentPageIndexTeamMember(0);
-      }
-
-      pageViewTeamMemberController.animateToPage(
-        landingProvider.currentPageIndexTeamMember,
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.easeIn,
-      );
-    });
   }
 
   animateToMinMax(
@@ -132,24 +111,26 @@ class _LandingMobilePageState extends State<LandingMobilePage> {
     int seconds,
     ScrollController controller,
   ) {
-    controller
-        .animateTo(
-      direction,
-      duration: Duration(seconds: seconds),
-      curve: Curves.linear,
-    )
-        .then(
-      (value) {
-        direction = direction == max ? min : max;
-        animateToMinMax(
-          max,
-          min,
-          direction,
-          seconds,
-          controller,
-        );
-      },
-    );
+    if (isDisposed == false) {
+      controller
+          .animateTo(
+        direction,
+        duration: Duration(seconds: seconds),
+        curve: Curves.linear,
+      )
+          .then(
+        (value) {
+          direction = direction == max ? min : max;
+          animateToMinMax(
+            max,
+            min,
+            direction,
+            seconds,
+            controller,
+          );
+        },
+      );
+    }
   }
 
   Widget buildDrawerMenuItem(BuildContext context) => Column(

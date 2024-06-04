@@ -32,7 +32,7 @@ class LandingProvider with ChangeNotifier {
   ];
   List<Widget> get imageHeader => _imageHeader;
   final List<Widget> _imageMemberTeam = const [
-    TeamMemberCardWidget(member: "astria"),
+    TeamMemberCardWidget(member: "astria-revisi"),
     TeamMemberCardWidget(member: "fanja"),
     TeamMemberCardWidget(member: "jelang"),
     TeamMemberCardWidget(member: "ikis"),

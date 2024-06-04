@@ -44,7 +44,7 @@ dependencies:
   intl: ^0.18.1
   after_layout: ^1.2.0
   flutter_carousel_widget: ^2.2.0
-  # fl_chart: ^0.68.0
+  stack_trace: ^1.11.1
   syncfusion_flutter_charts: 20.4.44
 
 dev_dependencies:
