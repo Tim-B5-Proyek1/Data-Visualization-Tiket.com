@@ -14,7 +14,7 @@ class FlightService {
       );
 
       if (response.statusCode == 200) {
-        final flight = jsonDecode(response.body)['data'] as List;
+        final flight = jsonDecode(response.body) as List;
         final flights = flight.map((object) {
           return FlightModel(
             id: object['id'],

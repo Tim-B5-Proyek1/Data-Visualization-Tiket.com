@@ -46,7 +46,7 @@ class ImageHeaderItemWidget extends StatelessWidget {
               caption,
               style: primaryTextStyle.copyWith(
                 fontWeight: bold,
-                fontSize: 20,
+                fontSize: 16,
               ),
             ),
           ),
